@@ -108,6 +108,27 @@ html {
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* App shell insets to prevent fixed navs from overlapping content */
+:root {
+  /* Defaults (mobile): header + pillbar heights, no desktop sidebar */
+  --nav-header-h: 64px; /* adjust to your header height */
+  --pillbar-h: 32px;    /* adjust to your mobile pillbar height */
+  --nav-desktop-w: 0px; /* no sidebar by default on mobile */
+}
+
+@media (min-width: 1024px) {
+  :root {
+    /* On desktop, hide pillbar and add left sidebar width */
+    --pillbar-h: 0px;
+    --nav-desktop-w: 280px; /* adjust to your desktop navbar width */
+  }
+}
+
+.app-shell {
+  padding-top: var(--nav-header-h);
+  padding-bottom: var(--pillbar-h);
+}
+
 /* Class-based dark mode (controlled by ThemeProvider) placed after :root so it overrides correctly */
 html.dark {
   --background: oklch(0.145 0 0);

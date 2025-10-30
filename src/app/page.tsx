@@ -1,7 +1,3 @@
-"use client";
-
-import ThemeToggler from "@/components/layout/ThemeToggler";
-
 export default function Home() {
 
   return (
@@ -9,7 +5,6 @@ export default function Home() {
       <div className="mx-auto max-w-5xl p-8">
         <header className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold tracking-tight dark:text-brand-300">Next.js + Tailwind v4</h1>
-          <ThemeToggler />
         </header>
 
         <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">

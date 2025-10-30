@@ -3,19 +3,31 @@
 import { useTheme } from '@/contexts/ThemeContext'
 import { Moon, Sun } from 'lucide-react'
 import { toast } from 'react-hot-toast'
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export default function ThemeToggler() {
   const { theme, toggleTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const onToggle = useCallback(() => {
     const next = theme === 'dark' ? 'light' : 'dark'
     toggleTheme()
     toast(next === 'dark' ? 'Switched to Dark mode' : 'Switched to Light mode', {
-      icon: next === 'dark' ? <Moon className="h-4 w-4 text-brand-500" /> : <Sun className="h-4 w-4 text-amber-500" />,
+      icon:
+        next === 'dark' ? (
+          <Moon className="h-4 w-4 text-brand-500" />
+        ) : (
+          <Sun className="h-4 w-4 text-amber-500" />
+        ),
       duration: 800,
     })
   }, [theme, toggleTheme])
+
+  if (!mounted) return null // ✅ prevent mismatch
 
   return (
     <button
