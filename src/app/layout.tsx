@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Toaster } from "react-hot-toast";
-import { NavigationProvider } from "@/contexts/NavigationContext";
 import "./globals.css";
-import { ResponsiveNav } from "@/components/layout/ResponsiveNav";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -34,12 +32,7 @@ export default function RootLayout({
       </head>
       <body className={`${plusJakarta.variable} antialiased`}>
         <ThemeProvider>
-          <NavigationProvider>
-            <ResponsiveNav />
-            <div className="app-shell">
-              {children}
-            </div>
-          </NavigationProvider>
+          {children}
           <Toaster
             position="top-center"
             toastOptions={{
