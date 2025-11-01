@@ -49,3 +49,12 @@ scripts
 
 # documentation
 docs
+
+# experimental
+out
+.experiments
+
+# seo
+sitemap.xml
+sitemap-*.xml
+robots.txt
