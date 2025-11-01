@@ -33,7 +33,7 @@ export type UMKMInfo = {
   category: string;
   subcategory: string;
   images: string[];
-  pricing?: string[];
+  pricing?: number[];
   rating: number;
   reviews?: ReviewData[];
   schedules: Schedule[];
@@ -46,23 +46,5 @@ const universalSchedule = [
     close: "17:00"
   }
 ];
-
-export const umkmWithoutOptional : UMKMInfo = {
-  name: "Contoh UMKM",
-  address: "Jl. Contoh Alamat No. 1, Kota Contoh",
-  description: "Ini adalah deskripsi singkat tentang UMKM contoh.",
-  category: "Kuliner",
-  subcategory: "Makanan Ringan",
-  coordinates: {
-    lat: -6.200001,
-    lng: 106.816666
-  },
-  images: [
-    "https://example.com/images/umkm1-1.jpg",
-    "https://example.com/images/umkm1-2.jpg"
-  ],
-  rating: 4.5,
-  schedules: universalSchedule
-};
 
 export type UMKMData = Metadata & UMKMInfo;

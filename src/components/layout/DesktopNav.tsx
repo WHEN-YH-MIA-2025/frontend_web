@@ -3,38 +3,78 @@
 import { NavLink } from './NavLink';
 import Link from 'next/link';
 import ThemeToggler from './ThemeToggler';
+import { useNavigation } from '@/hooks/useNavigation';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { ComingSoonBadge } from '@/components/common/ComingSoonBadge';
 
-const navItems = [
-  { href: '/map', label: 'Map' },
-  { href: '/umkm', label: 'UMKM' },
-  { href: '/About', label: 'About' },
+const navItems: Array<{ href: string; label: string; comingSoon?: boolean }> = [
+  { href: '/', label: 'Home' },
+  { href: '/maps', label: 'Maps' },
+  { href: '/about', label: 'About' },
+  { href: '/umkm', label: 'Directory'},
 ];
 
 export function DesktopNavBar() {
+  const { isScrolled } = useNavigation();
 
   return (
-    <nav
-      className={`fixed hidden md:flex bg-white border-gray-200 shadow-sm dark:border-gray-800 dark:bg-gray-900 left-0 right-0 z-40`}
+    <motion.nav
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 hidden md:block',
+        isScrolled 
+          ? 'backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 shadow-lg border-b border-gray-200/20 dark:border-gray-800/20' 
+          : 'bg-transparent'
+      )}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-8">
-            <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-brand-600">SpillDong!</span>
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={{ 
+              scale: isScrolled ? 0.95 : 1,
+            }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link 
+              href="/" 
+              className={cn(
+                "flex items-center space-x-2 group transition-all",
+                isScrolled 
+                  ? "text-brand-600 dark:text-brand-400" 
+                  : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] dark:text-white"
+              )}
+            >
+              <span className="text-2xl font-bold group-hover:scale-105 transition-transform">
+                SpillDong!
+              </span>
             </Link>
-            <div className="flex items-center space-x-6">
-              {navItems.map((item) => (
-                <NavLink key={item.href} href={item.href}>
+          </motion.div>
+
+          {/* Navigation Links */}
+          <div className="flex items-center space-x-1">
+            {navItems.map((item) => (
+              <div key={item.href} className="relative flex items-center gap-2">
+                <NavLink href={item.href} isScrolled={isScrolled}>
                   {item.label}
                 </NavLink>
-              ))}
-            </div>
+                {item.comingSoon && (
+                  <ComingSoonBadge size="sm" animated={false} />
+                )}
+              </div>
+            ))}
           </div>
-          <div className="flex items-center space-x-4">
+
+          {/* Actions */}
+          <div className="flex items-center space-x-3">
             <ThemeToggler />
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
