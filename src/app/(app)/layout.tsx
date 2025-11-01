@@ -1,5 +1,6 @@
 import { NavigationProvider } from "@/contexts/NavigationContext";
 import { ResponsiveNav } from "@/components/layout/ResponsiveNav";
+import { Footer } from "@/components/layout/Footer";
 
 export default function AppLayout({
   children,
@@ -7,11 +8,15 @@ export default function AppLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
-      <NavigationProvider>
+    <NavigationProvider>
+      <div className="min-h-screen flex flex-col">
         <ResponsiveNav />
-      </NavigationProvider>
-      {children}
-    </div>
+        {/* Main content with padding for fixed navigation */}
+        <div className="md:pt-0 md:pb-0 flex-1">
+          {children}
+        </div>
+        <Footer />
+      </div>
+    </NavigationProvider>
   );
 }

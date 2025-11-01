@@ -1,47 +1,194 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SpillDong - Local Business Directory for Students
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-16.0-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2-blue)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6)](https://www.typescriptlang.org/)
 
-First, make sure you are in the correct directory and install the dependencies:
+A modern, student-focused local business directory platform built with the latest web technologies. Discover laundry services, food spots, stores, and pharmacies near your campus with a beautiful, accessible interface.
+
+## ✨ Features
+
+- 🌓 **Dark Mode** - Seamless theme switching with no flash
+- 📱 **Fully Responsive** - Mobile-first design that works everywhere
+- ⚡ **Lightning Fast** - Optimized for performance (>90 Lighthouse score)
+- 🎭 **Smooth Animations** - Framer Motion powered micro-interactions
+- ♿ **Accessible** - WCAG 2.1 AA compliant
+- 🔍 **SEO Optimized** - Built-in sitemap and meta tags
+- 🧭 **Smart Navigation** - Transparent-to-solid navbar with scroll detection
+
+## 🚀 Tech Stack
+
+### Core Framework
+- **Next.js 16.0** with App Router
+- **React 19.2** with Server Components
+- **TypeScript 5** for type safety
+
+### Styling
+- **Tailwind CSS v4** with custom design tokens
+- **tw-animate-css** for extended animations
+- **Framer Motion** for complex animations
+- **shadcn/ui** component patterns
+
+### UI Components
+- **Radix UI** for accessible primitives
+- **Lucide React** for beautiful icons
+- **CVA** (Class Variance Authority) for variant management
+
+### Developer Experience
+- **ESLint** with Next.js config
+- **Babel React Compiler** enabled
+- **Hot Reload** with Fast Refresh
+
+## 📦 Installation
+
 ```bash
+# Clone the repository
+git clone https://github.com/WHEN-YH-MIA-2025/frontend_web.git
+
+# Navigate to project directory
+cd frontend_web
+
+# Install dependencies
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
 
-Then, run the development server:
-
-```bash
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 Design System
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Brand Colors
+The project uses a custom brand color scale (indigo-like) available through Tailwind:
+- `bg-brand`, `text-brand` - Default brand color
+- `bg-brand-{50-900}` - Full color scale
+- Automatically adapts to dark mode
 
-## Learn More
+### Components
+All components follow these principles:
+- **Variant-based** - Using CVA for consistent variants
+- **Animated** - Smooth transitions and micro-interactions
+- **Accessible** - Proper ARIA labels and keyboard navigation
+- **Responsive** - Mobile-first approach
 
-To learn more about Next.js, take a look at the following resources:
+### Navigation
+- **Desktop**: Transparent navbar that becomes solid on scroll
+- **Mobile**: Fixed header + bottom navigation bar
+- **Scroll threshold**: 50px
+- **Smooth transitions**: 300ms duration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Homepage (`/`)
+- Hero section with animated background
+- Statistics showcase
+- Category cards
+- Features section
+- CTA sections
 
-## Deploy on Vercel
+### About (`/about`)
+- Mission statement
+- Core values
+- Team showcase
+- Statistics
+- Contact CTA
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Maps (`/maps`)
+- Coming soon!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Businesses (`/umkm`)
+- Business listings
+- Search and filter
+- Category navigation
+- Business cards with details
+
+## 📱 Mobile Optimization
+
+- Bottom navigation bar with pill design
+- Touch-friendly targets (44x44px minimum)
+- Optimized for one-handed use
+- Safe area support for notched devices
+
+## 🎭 Animations
+
+All animations follow these guidelines:
+- Use `framer-motion` for complex animations
+- Leverage `tw-animate-css` for simple utilities
+- Respect `prefers-reduced-motion`
+- 60fps smooth animations
+- Debounced scroll listeners (10ms)
+
+## 🔧 Configuration
+
+### Environment Variables
+Create a `.env.local` file:
+```env
+SITE_URL=https://spilldong.app
+```
+
+### Tailwind Configuration
+Custom design tokens are defined in `app/globals.css`:
+- Color system with dark mode support
+- Custom brand colors
+- Spacing and typography scales
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+### Manual Build
+```bash
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+## 📊 Performance Targets
+
+- **Lighthouse Performance**: >90
+- **Lighthouse Accessibility**: >95
+- **First Contentful Paint**: <1.5s
+- **Largest Contentful Paint**: <2.5s
+- **Cumulative Layout Shift**: <0.1
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these guidelines:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Team
+
+Built by students, for students at WHEN-YH-MIA-2025.
+
+## 🐛 Bug Reports
+
+Found a bug? Please [open an issue](https://github.com/WHEN-YH-MIA-2025/frontend_web/issues).
+
+## 📞 Support
+
+For questions or support, reach out to:
+- Email: team@spilldong.app
+- GitHub Issues: [Project Issues](https://github.com/WHEN-YH-MIA-2025/frontend_web/issues)
+
+---
+
+**Made with ❤️ by the SpillDong Team**

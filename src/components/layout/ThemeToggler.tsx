@@ -39,12 +39,10 @@ export default function ThemeToggler() {
       {theme === 'dark' ? (
         <>
           <Sun className="h-4 w-4" />
-          <span className="hidden sm:inline">Light</span>
         </>
       ) : (
         <>
           <Moon className="h-4 w-4" />
-          <span className="hidden sm:inline">Dark</span>
         </>
       )}
     </button>
