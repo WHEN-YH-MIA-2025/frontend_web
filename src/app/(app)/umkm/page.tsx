@@ -1,17 +1,40 @@
-import { getBusinesses, getCategories } from "@/actions/businessActions";
+import { getBusinesses, getCategories, FilterOptions } from "@/actions/businessActions";
 import { DirectoryContent } from "@/components/directory/DirectoryContent";
 import { Suspense } from "react";
 import { BusinessGridSkeleton } from "@/components/businesses/BusinessCardSkeleton";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Business Directory | SpillDong",
   description: "Discover local businesses around your campus. Find food, laundry, and more.",
 };
 
-async function DirectoryPage() {
-  // Fetch initial data server-side
+type SearchParams = Promise<{
+  search?: string;
+  category?: string;
+  minRating?: string;
+  sortBy?: string;
+  page?: string;
+}>;
+
+async function DirectoryPage({ searchParams }: { searchParams: SearchParams }) {
+  // Resolve search params
+  const params = await searchParams;
+  
+  // Build filter options from query params
+  const filters: FilterOptions = {
+    search: params.search,
+    category: params.category,
+    minRating: params.minRating ? parseFloat(params.minRating) : undefined,
+    sortBy: params.sortBy as FilterOptions['sortBy'],
+  };
+  
+  const currentPage = params.page ? parseInt(params.page) : 1;
+  
+  // Fetch filtered data server-side
   const [businessesResult, categories] = await Promise.all([
-    getBusinesses(1, 9),
+    getBusinesses(currentPage, 9, filters),
     getCategories(),
   ]);
 
@@ -46,6 +69,9 @@ async function DirectoryPage() {
           <DirectoryContent
             initialBusinesses={businessesResult.businesses}
             categories={categories}
+            initialFilters={filters}
+            initialTotal={businessesResult.total}
+            initialHasMore={businessesResult.hasMore}
           />
         </Suspense>
       </div>

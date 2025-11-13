@@ -9,15 +9,22 @@ import { BusinessGridSkeleton } from "@/components/businesses/BusinessCardSkelet
 import { InfiniteScrollTrigger } from "./InfiniteScrollTrigger";
 import { motion } from "framer-motion";
 import { Store } from "lucide-react";
+import { FilterOptions } from "@/actions/businessActions";
 
 interface DirectoryContentProps {
   readonly initialBusinesses: UMKMData[];
   readonly categories: string[];
+  readonly initialFilters?: FilterOptions;
+  readonly initialTotal?: number;
+  readonly initialHasMore?: boolean;
 }
 
 export function DirectoryContent({
   initialBusinesses,
   categories,
+  initialFilters,
+  initialTotal = 0,
+  initialHasMore = true,
 }: DirectoryContentProps) {
   const {
     businesses,
@@ -34,7 +41,7 @@ export function DirectoryContent({
     setSortBy,
     loadMore,
     resetFilters,
-  } = useDirectory(initialBusinesses);
+  } = useDirectory(initialBusinesses, initialFilters, initialTotal, initialHasMore);
 
   return (
     <div className="space-y-8">

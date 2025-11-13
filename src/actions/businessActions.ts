@@ -81,3 +81,11 @@ export async function getBusinesses(
 export async function getCategories(): Promise<string[]> {
   return Object.values(Category);
 }
+
+export async function getBusinessById(id: number): Promise<UMKMData | null> {
+  // Simulate network delay for realistic loading
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  
+  const business = umkmDat.find((b) => b.id === id);
+  return business || null;
+}
