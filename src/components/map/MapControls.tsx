@@ -50,7 +50,7 @@ export function MapControls({
   return (
     <>
       {/* Top Control Bar */}
-      <div className="absolute top-20 md:top-20 left-0 right-0 z-40 px-4 md:px-6 pointer-events-none">
+      <div className="absolute top-16 md:top-20 left-0 right-0 z-40 px-4 md:px-6 pointer-events-none">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -177,7 +177,7 @@ export function MapControls({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="absolute top-36 md:top-32 left-4 right-4 md:left-auto md:right-6 z-50 pointer-events-auto"
+              className="absolute top-32 md:top-32 left-4 right-4 md:left-auto md:right-6 z-50 pointer-events-auto"
             >
               <div className="backdrop-blur-2xl bg-white/80 dark:bg-gray-900/80 border border-white/40 dark:border-white/10 rounded-2xl shadow-2xl p-4 max-w-xs ml-auto">
                 <div className="flex items-center justify-between mb-4">
