@@ -28,8 +28,8 @@ export function NavLink({ href, children, isScrolled = true }: NavLinkProps) {
     // When scrolled (solid navbar)
     isScrolled && [
       isActive 
-        ? 'bg-brand-50 text-brand-700 dark:bg-brand-950/50 dark:text-brand-300' 
-        : 'text-gray-700 dark:text-gray-300 hover:bg-brand-50/50 dark:hover:bg-brand-950/30 hover:text-brand-600 dark:hover:text-brand-400'
+        ? 'bg-brand-50 text-brand-700 dark:bg-brand-900/40 dark:text-brand-400' 
+        : 'text-gray-700 dark:text-gray-300 hover:bg-brand-50/50 dark:hover:bg-brand-900/40 hover:text-brand-600 dark:hover:text-brand-400'
     ]
   );
 

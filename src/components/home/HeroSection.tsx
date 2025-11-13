@@ -198,16 +198,18 @@ export function HeroSection() {
             transition={{ delay: 1, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="xl"
-                variant="glass"
-                className="text-white border-white/50 hover:bg-white/30 shadow-2xl backdrop-blur-xl"
-              >
-                <Search className="w-5 h-5 mr-2" />
-                <span>Start Exploring</span>
-              </Button>
-            </motion.div>
+            <Link href="/umkm">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  size="xl"
+                  variant="glass"
+                  className="text-white border-white/50 hover:bg-white/30 shadow-2xl backdrop-blur-xl"
+                >
+                  <Search className="w-5 h-5 mr-2" />
+                  <span>Start Exploring</span>
+                </Button>
+              </motion.div>
+            </Link>
 
             <Link href="/maps">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

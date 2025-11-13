@@ -5,8 +5,6 @@ export type Metadata = {
 };
 
 export type Review = {
-  id: string;
-  umkmId: number;
   rating: number;
   comment: string;
 }
@@ -39,12 +37,21 @@ export type UMKMInfo = {
   schedules: Schedule[];
 };
 
-const universalSchedule = [
+export const universalMockReview: ReviewData[] = [
   {
-    day: "Every Day",
-    open: "09:00",
-    close: "17:00"
+    id: 1,
+    rating: 5,
+    comment: "Excellent service and friendly staff!",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    id: 2,
+    rating: 4,
+    comment: "Great products, will shop again.",
+    createdAt: new Date(),
+    updatedAt: new Date()
   }
-];
+]
 
 export type UMKMData = Metadata & UMKMInfo;

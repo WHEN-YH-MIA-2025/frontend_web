@@ -10,6 +10,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { useRef } from 'react';
+import Link from 'next/link';
 
 const categories = [
   {
@@ -17,36 +18,36 @@ const categories = [
     title: 'Laundry',
     description: 'Clean clothes, fresh start',
     gradient: 'from-blue-500 to-cyan-500',
-    count: '12+',
     accentColor: 'bg-blue-500/20',
-    borderColor: 'border-blue-500/30'
+    borderColor: 'border-blue-500/30',
+    categorySlug: 'Laundry'
   },
   {
     icon: Store,
     title: 'Stores',
     description: 'Everything you need, nearby',
     gradient: 'from-purple-500 to-pink-500',
-    count: '25+',
     accentColor: 'bg-purple-500/20',
-    borderColor: 'border-purple-500/30'
+    borderColor: 'border-purple-500/30',
+    categorySlug: 'Store'
   },
   {
     icon: Utensils,
     title: 'Foods',
     description: 'Delicious meals for students',
     gradient: 'from-orange-500 to-red-500',
-    count: '40+',
     accentColor: 'bg-orange-500/20',
-    borderColor: 'border-orange-500/30'
+    borderColor: 'border-orange-500/30',
+    categorySlug: 'Food'
   },
   {
     icon: Pill,
     title: 'Pharmacy',
     description: 'Health essentials 24/7',
     gradient: 'from-green-500 to-emerald-500',
-    count: '8+',
     accentColor: 'bg-green-500/20',
-    borderColor: 'border-green-500/30'
+    borderColor: 'border-green-500/30',
+    categorySlug: 'Pharmacy'
   },
 ];
 
@@ -156,7 +157,7 @@ export function CategoriesSection() {
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-linear-to-r ${category.gradient}`} />
                   
                   {/* Hover glow effect */}
-                  <div className={`absolute inset-0 ${category.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl`} />
+                  <div className={`absolute inset-0 ${category.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl pointer-events-none`} />
                   
                   {/* Content */}
                   <div className="relative p-6 md:p-8">
@@ -176,9 +177,6 @@ export function CategoriesSection() {
                     <div className="mb-3">
                       <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-1 flex items-baseline gap-2">
                         {category.title}
-                        <span className={`text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-md bg-white/50 dark:bg-white/10 border ${category.borderColor}`}>
-                          {category.count}
-                        </span>
                       </h3>
                     </div>
 
@@ -188,22 +186,24 @@ export function CategoriesSection() {
                     </p>
 
                     {/* CTA with arrow */}
-                    <motion.div 
-                      className="flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold text-sm group/link cursor-pointer"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <span>Explore now</span>
-                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </motion.div>
+                    <Link href={`/umkm?category=${category.categorySlug}`}>
+                      <motion.div 
+                        className="flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold text-sm group/link cursor-pointer"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <span>Explore now</span>
+                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                      </motion.div>
+                    </Link>
                   </div>
 
                   {/* Subtle border animation on hover */}
-                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-white/20 transition-colors duration-300" />
+                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-white/20 transition-colors duration-300 pointer-events-none" />
                 </div>
 
                 {/* Floating shadow for depth */}
-                <div className="absolute inset-0 -z-10 rounded-3xl bg-black/5 dark:bg-black/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2" />
+                <div className="absolute inset-0 -z-10 rounded-3xl bg-black/5 dark:bg-black/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 pointer-events-none" />
               </motion.div>
             );
           })}

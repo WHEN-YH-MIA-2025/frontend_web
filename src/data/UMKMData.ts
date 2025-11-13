@@ -1,4 +1,4 @@
-import { UMKMData } from "./UMKMType";
+import { UMKMData, universalMockReview } from "./UMKMType";
 
 const universalSchedule = [
   {
@@ -32,10 +32,18 @@ export const umkmDat: UMKMData[] = [
     category: Category.Food,
     subcategory: "mie ayam",
     images: [
+      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no",
       "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyO0EPCoCJLrk4DfPeMM1EgRN-wc7VblhJRoo5CXJv-g4LGMIai0hvk7bsaCPNQoRVXHS0Sa62eTyNNvulzk1Y7QclZoGhHAgj7dZ2QV3LQ2eY4HcpBvszPEgBxMWNden-Suvcycw8czsMo=w408-h307-k-no"
     ],
     rating: 4.3,
-    phone: "85888018335",
+    phone: "+6285888018335",
     email: undefined,
     website: undefined,
     pricing: [
@@ -43,7 +51,7 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 2,
@@ -70,7 +78,7 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 3,
@@ -97,7 +105,7 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 4,
@@ -124,7 +132,7 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 5,
@@ -151,7 +159,7 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 6,
@@ -170,12 +178,12 @@ export const umkmDat: UMKMData[] = [
       "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzN-1Js-I67cZ4cuglZXrhswLkHzouV5nxwyS4kgI_ChqP_aNtRua4f5MjBMxGyEH4nRmBSacbcgDzzWYs7g0NKM1nOOelMN5SY1YfJoEk9_VZKryMUDOvRtamJ4DCOs7rGPmwB=w408-h725-k-no"
     ],
     rating: 5.0,
-    phone: "85810321084",
+    phone: "+6285810321084",
     email: undefined,
     website: undefined,
     pricing: [],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 7,
@@ -202,7 +210,7 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 8,
@@ -221,7 +229,7 @@ export const umkmDat: UMKMData[] = [
       "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwbqoGGPBF1DhFZTrtbMvnXenSfrgRabts4gl2JDRRWtq2phCNaUl8fUCLnRP9y677_vBjWkuo2eTpXCUhRjvxp-p_l3jWYHw1hAyx6uRKuTCwm2Rbzl9yHY9GHeBShvMor8li5jBHqWGJP=w408-h408-k-no"
     ],
     rating: 4.5,
-    phone: "85866360182",
+    phone: "+6285866360182",
     email: undefined,
     website: undefined,
     pricing: [
@@ -229,7 +237,7 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 9,
@@ -248,7 +256,7 @@ export const umkmDat: UMKMData[] = [
       "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSye28Smu0x1lh6isc0ROpY-NgzIgd2jK2v9mFmCdgFPOFb-uZzow4mOvJls4TNGkK0slniOFxz-mrPgpdKLvvT20VDYFqBc4_7i1apXd7CRRwGr7FwOBhEbjyNvMfAu6HQ6lMdm=w408-h724-k-no"
     ],
     rating: 4.4,
-    phone: "85879479800",
+    phone: "+6285879479800",
     email: undefined,
     website: undefined,
     pricing: [
@@ -256,7 +264,7 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 10,
@@ -275,12 +283,12 @@ export const umkmDat: UMKMData[] = [
       "https://maps.app.goo.gl/PnB1nTPa9PtiSpJT6"
     ],
     rating: 4.8,
-    phone: "81393213276",
+    phone: "+6281393213276",
     email: undefined,
     website: undefined,
     pricing: [],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 11,
@@ -299,7 +307,7 @@ export const umkmDat: UMKMData[] = [
       "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSygIhmwSFr6VvU5wIXTDSWZWj9RGQV9B7-J5ToyXDsy4XPDR3VGL6yQSCFltm-mVGLNdDihIDkIzgdrldaQm2IYUmZWSDKaVCj6DxN0BVOLnJot_0M0Snm6JV7mKZzJV9p6hYra=w533-h240-k-no"
     ],
     rating: 4.9,
-    phone: "87844618586",
+    phone: "+6287844618586",
     email: undefined,
     website: undefined,
     pricing: [
@@ -307,7 +315,7 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 12,
@@ -334,7 +342,7 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 13,
@@ -361,7 +369,7 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 14,
@@ -388,7 +396,7 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 15,
@@ -412,7 +420,7 @@ export const umkmDat: UMKMData[] = [
     website: undefined,
     pricing: [],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 16,
@@ -431,7 +439,7 @@ export const umkmDat: UMKMData[] = [
       "https://lh3.googleusercontent.com/p/AF1QipMS6ZRLNhIVf5JM8CVXGuiyaPgv0IOwzOynJLFP=w426-h240-k-no"
     ],
     rating: 4.5,
-    phone: "87717249661",
+    phone: "+6287717249661",
     email: undefined,
     website: undefined,
     pricing: [
@@ -439,7 +447,7 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 17,
@@ -458,7 +466,7 @@ export const umkmDat: UMKMData[] = [
       "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw_AW_xpfSjTRTJDVDV5xokg-GiWv-JyR3SbW26SvWkJrgxwD6bACisFCEa86J3QSNDdWmQ_hVzrMAy0xK5Lp6VxcHX0j3blsXG1JU08DiifUrv2Ynms1fCaHNYHdXvxpViQYvaeQ=w408-h544-k-no"
     ],
     rating: 4.5,
-    phone: "81901182703",
+    phone: "+6281901182703",
     email: undefined,
     website: undefined,
     pricing: [
@@ -472,7 +480,7 @@ export const umkmDat: UMKMData[] = [
         close: "17:00"
       }
     ],
-    reviews: []
+    reviews: universalMockReview
   },
   {
     id: 18,
@@ -499,6 +507,6 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: []
+    reviews: universalMockReview
   }
 ] as const;

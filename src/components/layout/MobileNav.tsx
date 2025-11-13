@@ -56,7 +56,7 @@ export function MobileNav() {
         transition={{ type: 'spring', stiffness: 100, damping: 20 }}
       >
         <div className="relative w-full px-4 pb-4">
-          <div className="backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200/50 dark:border-gray-800/50 shadow-2xl rounded-2xl overflow-hidden">
+          <div className="backdrop-blur-md bg-white/70 dark:bg-gray-900/90 border border-gray-200/50 dark:border-gray-800/50 shadow-2xl rounded-2xl overflow-hidden">
             <div className="flex justify-around items-center h-16 px-2">
               {navItems.map((item) => {
                 const Icon = item.icon;
