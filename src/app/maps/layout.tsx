@@ -8,10 +8,10 @@ export default function MapsLayout({
 }>) {
   return (
     <NavigationProvider>
-      <div className="h-screen flex flex-col overflow-hidden">
+      <div className="h-screen w-screen flex flex-col overflow-hidden fixed inset-0">
         <ResponsiveNav />
         {/* Full-screen map without footer */}
-        <div className="flex-1 relative overflow-hidden">
+        <div className="flex-1 relative overflow-hidden touch-none">
           {children}
         </div>
       </div>
