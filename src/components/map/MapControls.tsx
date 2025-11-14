@@ -57,11 +57,13 @@ export function MapControls({
           transition={{ duration: 0.3 }}  
           className="max-w-4xl mx-auto"
         >
-          <div className="flex items-center gap-2 md:gap-3 pointer-events-auto">
+          <div className="flex items-center justify-center gap-2 md:gap-3 pointer-events-auto">
             {/* Search Bar with Glassmorphism */}
             <div className={`
-              flex-1 
-              backdrop-blur-2xl 
+              flex-initial
+              w-full 
+              max-w-[70%] 
+              md:max-w-[60%]
               bg-white/70 
               dark:bg-gray-900/70 
               border 

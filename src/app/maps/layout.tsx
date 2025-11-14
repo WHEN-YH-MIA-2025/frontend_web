@@ -8,7 +8,7 @@ export default function MapsLayout({
 }>) {
   return (
     <NavigationProvider>
-      <div className="h-screen w-screen flex flex-col overflow-hidden fixed inset-0">
+      <div className="h-dvh w-screen flex flex-col overflow-hidden fixed inset-0" style={{ height: '100dvh' }}>
         <ResponsiveNav />
         {/* Full-screen map without footer */}
         <div className="flex-1 relative overflow-hidden touch-none">

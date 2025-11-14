@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icon Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    canvas {
+      border: 1px solid #ddd;
+      margin: 10px;
+    }
+    button {
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+    button:hover {
+      background: #4f46e5;
+    }
+    .icon-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .icon-item {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>SpillDong Icon Generator</h1>
+  <p>Click the buttons below to download PWA icons:</p>
+  
+  <div>
+    <button onclick="generateIcon(192)">Download 192x192</button>
+    <button onclick="generateIcon(512)">Download 512x512</button>
+    <button onclick="generateIcon(180, 'apple-touch-icon')">Download Apple Touch Icon</button>
+    <button onclick="generateIcon(32, 'favicon')">Download Favicon 32x32</button>
+  </div>
+
+  <div class="icon-preview" id="preview"></div>
+
+  <script>
+    function generateIcon(size, name = null) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#6366f1');
+      gradient.addColorStop(1, '#8b5cf6');
+      
+      // Rounded rectangle background
+      const radius = size / 4;
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.roundRect(0, 0, size, size, radius);
+      ctx.fill();
+
+      // Map pin
+      const pinScale = size / 512;
+      ctx.save();
+      ctx.translate(size * 0.305, size * 0.156);
+      ctx.scale(pinScale, pinScale);
+      
+      // Pin shape
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+      ctx.beginPath();
+      ctx.moveTo(100, 0);
+      ctx.bezierCurveTo(44.772, 0, 0, 44.772, 0, 100);
+      ctx.bezierCurveTo(0, 175, 100, 320, 100, 320);
+      ctx.bezierCurveTo(100, 320, 200, 175, 200, 100);
+      ctx.bezierCurveTo(200, 44.772, 155.228, 0, 100, 0);
+      ctx.fill();
+      
+      // Inner circle
+      ctx.fillStyle = '#6366f1';
+      ctx.beginPath();
+      ctx.arc(100, 100, 50, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Store icon
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.moveTo(75, 90);
+      ctx.lineTo(100, 75);
+      ctx.lineTo(125, 90);
+      ctx.lineTo(125, 125);
+      ctx.lineTo(75, 125);
+      ctx.closePath();
+      ctx.fill();
+      
+      ctx.fillStyle = '#6366f1';
+      ctx.fillRect(85, 100, 12, 15);
+      ctx.fillRect(103, 100, 12, 15);
+      ctx.fillRect(92, 95, 16, 2);
+      
+      ctx.restore();
+
+      // Text
+      const fontSize = size / 7;
+      ctx.fillStyle = 'white';
+      ctx.font = `bold ${fontSize}px Arial, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('SpillDong!', size / 2, size * 0.82);
+
+      // Download
+      const fileName = name ? `${name}.png` : `icon-${size}x${size}.png`;
+      canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // Preview
+      const preview = document.getElementById('preview');
+      const item = document.createElement('div');
+      item.className = 'icon-item';
+      item.innerHTML = `<canvas width="${size}" height="${size}"></canvas><br>${fileName}`;
+      preview.appendChild(item);
+      
+      const previewCanvas = item.querySelector('canvas');
+      const previewCtx = previewCanvas.getContext('2d');
+      previewCtx.drawImage(canvas, 0, 0);
+    }
+
+    // Polyfill for roundRect
+    if (!CanvasRenderingContext2D.prototype.roundRect) {
+      CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+        this.moveTo(x + radius, y);
+        this.lineTo(x + width - radius, y);
+        this.quadraticCurveTo(x + width, y, x + width, y + radius);
+        this.lineTo(x + width, y + height - radius);
+        this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        this.lineTo(x + radius, y + height);
+        this.quadraticCurveTo(x, y + height, x, y + height - radius);
+        this.lineTo(x, y + radius);
+        this.quadraticCurveTo(x, y, x + radius, y);
+        this.closePath();
+      };
+    }
+  </script>
+</body>
+</html>

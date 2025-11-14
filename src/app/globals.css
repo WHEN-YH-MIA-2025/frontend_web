@@ -170,10 +170,21 @@ html.dark {
   }
   body {
     @apply bg-background text-foreground;
+    overscroll-behavior: none; /* Prevent pull-to-refresh on mobile */
+  }
+  
+  html, body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
   }
 }
 
 @layer utilities {
+  /* Mobile viewport height fix for dynamic browser UI */
+  .h-dvh {
+    height: 100dvh; /* Dynamic viewport height */
+    height: 100vh; /* Fallback for older browsers */
+  }
+
   /* Hide scrollbar but keep functionality */
   .scrollbar-hide {
     -ms-overflow-style: none;

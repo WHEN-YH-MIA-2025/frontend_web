@@ -5,7 +5,7 @@ import { Heart, Github, Linkedin, Mail } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border">
+    <footer className="bg-background border-t border-border pb-24 md:pb-0">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
