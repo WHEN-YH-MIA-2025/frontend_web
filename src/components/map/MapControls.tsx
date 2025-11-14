@@ -50,11 +50,11 @@ export function MapControls({
   return (
     <>
       {/* Top Control Bar */}
-      <div className="absolute top-20 md:top-20 left-0 right-0 z-40 px-3 md:px-6 pointer-events-none">
+      <div className="absolute top-16 md:top-16 left-0 right-0 z-40 px-3 md:px-6 pointer-events-none">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.3 }}  
           className="max-w-4xl mx-auto"
         >
           <div className="flex items-center gap-2 md:gap-3 pointer-events-auto">
@@ -73,7 +73,7 @@ export function MapControls({
               duration-300
             `}>
               <div className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3">
-                <Search className="w-5 h-5 text-gray-400 shrink-0" />
+                <Search className="w-5 h-5 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Search businesses..."
@@ -100,22 +100,23 @@ export function MapControls({
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsFilterOpen(!isFilterOpen)}
               className={`
-                p-2.5 md:p-3 
+                p-2.5 md:p-3
+                shrink-0
                 backdrop-blur-2xl 
                 ${isFilterOpen 
                   ? 'bg-brand-500/90 text-white border-brand-400/50' 
                   : 'bg-white/70 dark:bg-gray-900/70 text-foreground border-white/40 dark:border-white/10'
                 }
                 border 
-                rounded-2xl 
+                rounded-xl md:rounded-2xl
                 shadow-xl
                 transition-all
                 relative
               `}
             >
-              <Filter className="w-5 h-5" />
+              <Filter className="w-4 h-4 md:w-5 md:h-5" />
               {filteredCategory !== 'all' && (
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-brand-500 rounded-full border-2 border-white dark:border-gray-900" />
+                <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-brand-500 rounded-full border-2 border-white dark:border-gray-900" />
               )}
             </motion.button>
 
@@ -125,19 +126,20 @@ export function MapControls({
               whileTap={{ scale: 0.95 }}
               onClick={onToggleSidebar}
               className={`
-                p-3 
+                p-2.5 md:p-3
+                shrink-0
                 backdrop-blur-2xl 
                 ${isSidebarOpen 
                   ? 'bg-brand-500/90 text-white border-brand-400/50' 
                   : 'bg-white/70 dark:bg-gray-900/70 text-foreground border-white/40 dark:border-white/10'
                 }
                 border 
-                rounded-2xl 
+                rounded-xl md:rounded-2xl
                 shadow-xl
                 transition-all
               `}
             >
-              <List className="w-5 h-5" />
+              <List className="w-4 h-4 md:w-5 md:h-5" />
             </motion.button>
           </div>
 
@@ -235,7 +237,7 @@ export function MapControls({
       </AnimatePresence>
 
       {/* Bottom Right Controls - Glassmorphism */}
-      <div className="absolute bottom-24 md:bottom-6 right-4 md:right-6 z-40 pointer-events-none">
+      <div className="absolute bottom-28 md:bottom-6 right-4 md:right-6 z-40 pointer-events-none">
         <div className="flex flex-col gap-2 pointer-events-auto">
           {/* Recenter Button */}
           <motion.button
