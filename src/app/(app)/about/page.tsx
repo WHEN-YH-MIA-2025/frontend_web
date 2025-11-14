@@ -58,8 +58,6 @@ export default function AboutPage() {
       <div className="absolute inset-0 bg-linear-to-b from-background via-muted/30 to-background" />
       
       {/* Multiple floating gradient orbs */}
-      <div className="absolute top-20 -left-20 w-[500px] h-[500px] bg-brand-400/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute top-40 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
       <div className="absolute bottom-20 left-1/3 w-[400px] h-[400px] bg-cyan-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
       <div className="absolute bottom-40 -right-20 w-[450px] h-[450px] bg-pink-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1.5s" }} />
 
@@ -71,7 +69,7 @@ export default function AboutPage() {
             src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
             alt="Students collaboration"
             fill
-            className="object-cover opacity-20 dark:opacity-10"
+            className="object-cover opacity-20 dark:opacity-20"
             priority
           />
           <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/60 to-background" />
