@@ -1,4 +1,10 @@
-import { UMKMData, universalMockReview } from "./UMKMType";
+import { UMKMData, universalMockReview } from "./UMKM.type";
+import { universities } from "./University.type";
+
+export enum City {
+  Depok = "Depok",
+  Semarang = "Semarang"
+}
 
 const universalSchedule = [
   {
@@ -17,7 +23,7 @@ export enum Category {
   Other = "Other"
 }
 
-export const umkmDat: UMKMData[] = [
+export const umkmData: UMKMData[] = [
   {
     id: 1,
     createdAt: new Date("2025-11-01T06:49:52.458550"),
@@ -51,7 +57,9 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Depok,
+    university: universities.find(u => u.code === "UI")
   },
   {
     id: 2,
@@ -78,7 +86,9 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Depok,
+    university: universities.find(u => u.code === "UI")
   },
   {
     id: 3,
@@ -105,7 +115,9 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Depok,
+    university: universities.find(u => u.code === "UI")
   },
   {
     id: 4,
@@ -132,7 +144,9 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 5,
@@ -159,7 +173,9 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Depok,
+    university: universities.find(u => u.code === "UI")
   },
   {
     id: 6,
@@ -183,7 +199,9 @@ export const umkmDat: UMKMData[] = [
     website: undefined,
     pricing: [],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Depok,
+    university: universities.find(u => u.code === "UI")
   },
   {
     id: 7,
@@ -210,7 +228,9 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Depok,
+    university: universities.find(u => u.code === "UI")
   },
   {
     id: 8,
@@ -237,7 +257,9 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 9,
@@ -264,7 +286,9 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 10,
@@ -288,7 +312,9 @@ export const umkmDat: UMKMData[] = [
     website: undefined,
     pricing: [],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 11,
@@ -315,7 +341,9 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 12,
@@ -342,7 +370,9 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 13,
@@ -369,7 +399,9 @@ export const umkmDat: UMKMData[] = [
       50000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 14,
@@ -396,7 +428,9 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 15,
@@ -420,7 +454,9 @@ export const umkmDat: UMKMData[] = [
     website: undefined,
     pricing: [],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 16,
@@ -447,7 +483,9 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 17,
@@ -480,7 +518,9 @@ export const umkmDat: UMKMData[] = [
         close: "17:00"
       }
     ],
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   },
   {
     id: 18,
@@ -507,6 +547,8 @@ export const umkmDat: UMKMData[] = [
       25000
     ],
     schedules: universalSchedule,
-    reviews: universalMockReview
+    reviews: universalMockReview,
+    city: City.Semarang,
+    university: universities.find(u => u.code === "UNDIP")
   }
 ] as const;

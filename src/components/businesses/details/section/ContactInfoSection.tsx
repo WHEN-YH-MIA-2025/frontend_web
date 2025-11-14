@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { UMKMData } from "@/data/UMKMType";
+import { UMKMData } from "@/data/UMKM.type";
 import { Phone, Mail, Globe, MessageCircle } from "lucide-react";
 
 interface ContactInfoSectionProps {

@@ -11,19 +11,30 @@ import {
   Utensils,
   Coffee,
   Sparkles,
-  Layers
+  Layers,
+  GraduationCap,
+  MapPin,
+  ChevronDown
 } from 'lucide-react';
 import { useState } from 'react';
+import { University } from '@/data/University.type';
 
 interface MapControlsProps {
   filteredCategory: string;
   onCategoryChange: (category: string) => void;
+  filteredUniversity: string;
+  onUniversityChange: (university: string) => void;
+  filteredCity: string;
+  onCityChange: (city: string) => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
   onRecenter: () => void;
   onToggleSidebar: () => void;
   isSidebarOpen: boolean;
   businessCount: number;
+  universities: University[];
+  cities: string[];
+  onUniversityMarkerClick: (university: University) => void;
 }
 
 const categories = [
@@ -37,12 +48,19 @@ const categories = [
 export function MapControls({
   filteredCategory,
   onCategoryChange,
+  filteredUniversity,
+  onUniversityChange,
+  filteredCity,
+  onCityChange,
   searchQuery,
   onSearchChange,
   onRecenter,
   onToggleSidebar,
   isSidebarOpen,
   businessCount,
+  universities,
+  cities,
+  onUniversityMarkerClick,
 }: MapControlsProps) {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -117,7 +135,7 @@ export function MapControls({
               `}
             >
               <Filter className="w-4 h-4 md:w-5 md:h-5" />
-              {filteredCategory !== 'all' && (
+              {(filteredCategory !== 'all' || filteredUniversity !== 'all' || filteredCity !== 'all') && (
                 <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-brand-500 rounded-full border-2 border-white dark:border-gray-900" />
               )}
             </motion.button>
@@ -146,7 +164,7 @@ export function MapControls({
           </div>
 
           {/* Results count - Glassmorphism */}
-          {(searchQuery || filteredCategory !== 'all') && (
+          {(searchQuery || filteredCategory !== 'all' || filteredUniversity !== 'all' || filteredCity !== 'all') && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -185,7 +203,7 @@ export function MapControls({
             >
               <div className="backdrop-blur-2xl bg-white/80 dark:bg-gray-900/80 border border-white/40 dark:border-white/10 rounded-2xl shadow-2xl p-4 max-w-xs ml-auto">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-bold text-sm text-foreground">Filter by Category</h3>
+                  <h3 className="font-bold text-sm text-foreground">Filters</h3>
                   <button
                     onClick={() => setIsFilterOpen(false)}
                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
@@ -194,43 +212,86 @@ export function MapControls({
                   </button>
                 </div>
 
-                <div className="space-y-2">
-                  {categories.map((category) => {
-                    const Icon = category.icon;
-                    const isActive = filteredCategory === category.id;
-
-                    return (
-                      <motion.button
-                        key={category.id}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => {
-                          onCategoryChange(category.id);
-                          setIsFilterOpen(false);
-                        }}
-                        className={`
-                          w-full 
-                          flex 
-                          items-center 
-                          gap-3 
-                          px-4 
-                          py-3 
-                          rounded-xl 
-                          transition-all
-                          ${isActive
-                            ? 'bg-brand-500 text-white shadow-lg'
-                            : 'bg-gray-50 dark:bg-gray-800/50 text-foreground hover:bg-gray-100 dark:hover:bg-gray-800'
-                          }
-                        `}
+                <div className="space-y-3">
+                  {/* Category Dropdown */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
+                      <Layers className="w-3.5 h-3.5" />
+                      Category
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={filteredCategory}
+                        onChange={(e) => onCategoryChange(e.target.value)}
+                        className="w-full px-3 py-2 rounded-lg bg-white/50 dark:bg-gray-800/50 border border-white/60 dark:border-white/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer"
+                        style={{ colorScheme: "light dark" }}
                       >
-                        <Icon className="w-5 h-5" />
-                        <span className="font-medium text-sm">{category.label}</span>
-                        {isActive && (
-                          <div className="ml-auto w-2 h-2 bg-white rounded-full" />
-                        )}
-                      </motion.button>
-                    );
-                  })}
+                        {categories.map((category) => (
+                          <option key={category.id} value={category.id}>
+                            {category.label}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                    </div>
+                  </div>
+
+                  {/* University Dropdown */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
+                      <GraduationCap className="w-3.5 h-3.5" />
+                      University
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={filteredUniversity}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          onUniversityChange(value);
+                          if (value !== 'all') {
+                            const university = universities.find(u => u.code === value);
+                            if (university) {
+                              onUniversityMarkerClick(university);
+                            }
+                          }
+                        }}
+                        className="w-full px-3 py-2 rounded-lg bg-white/50 dark:bg-gray-800/50 border border-white/60 dark:border-white/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer"
+                        style={{ colorScheme: "light dark" }}
+                      >
+                        <option value="all">All Universities</option>
+                        {universities.map((university) => (
+                          <option key={university.id} value={university.code}>
+                            {university.code} - {university.name}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                    </div>
+                  </div>
+
+                  {/* City Dropdown */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5" />
+                      City
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={filteredCity}
+                        onChange={(e) => onCityChange(e.target.value)}
+                        className="w-full px-3 py-2 rounded-lg bg-white/50 dark:bg-gray-800/50 border border-white/60 dark:border-white/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all appearance-none cursor-pointer"
+                        style={{ colorScheme: "light dark" }}
+                      >
+                        <option value="all">All Cities</option>
+                        {cities.map((city) => (
+                          <option key={city} value={city}>
+                            {city}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>

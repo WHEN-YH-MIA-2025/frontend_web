@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { UMKMData } from "@/data/UMKMType";
+import { UMKMData } from "@/data/UMKM.type";
 import { getBusinesses, FilterOptions } from "@/actions/businessActions";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -24,6 +24,8 @@ export function useDirectory(
   const [searchQuery, setSearchQuery] = useState(initialFilters?.search || "");
   const [debouncedSearch, setDebouncedSearch] = useState(initialFilters?.search || "");
   const [selectedCategory, setSelectedCategory] = useState<string>(initialFilters?.category || "All");
+  const [selectedUniversity, setSelectedUniversity] = useState<string>(initialFilters?.university || "All");
+  const [selectedCity, setSelectedCity] = useState<string>(initialFilters?.city || "All");
   const [minRating, setMinRating] = useState<number>(initialFilters?.minRating || 0);
   const [sortBy, setSortBy] = useState<"name" | "rating" | "newest">(initialFilters?.sortBy || "name");
 
@@ -31,6 +33,8 @@ export function useDirectory(
   const updateURL = useCallback((filters: {
     search?: string;
     category?: string;
+    university?: string;
+    city?: string;
     minRating?: number;
     sortBy?: string;
   }) => {
@@ -38,6 +42,8 @@ export function useDirectory(
     
     if (filters.search) params.set("search", filters.search);
     if (filters.category && filters.category !== "All") params.set("category", filters.category);
+    if (filters.university && filters.university !== "All") params.set("university", filters.university);
+    if (filters.city && filters.city !== "All") params.set("city", filters.city);
     if (filters.minRating && filters.minRating > 0) params.set("minRating", filters.minRating.toString());
     if (filters.sortBy && filters.sortBy !== "name") params.set("sortBy", filters.sortBy);
     
@@ -62,6 +68,8 @@ export function useDirectory(
         const filters: FilterOptions = {
           search: debouncedSearch,
           category: selectedCategory,
+          university: selectedUniversity,
+          city: selectedCity,
           minRating: minRating,
           sortBy: sortBy,
         };
@@ -83,7 +91,7 @@ export function useDirectory(
         setIsLoading(false);
       }
     },
-    [debouncedSearch, selectedCategory, minRating, sortBy]
+    [debouncedSearch, selectedCategory, selectedUniversity, selectedCity, minRating, sortBy]
   );
 
   // Reset and fetch when filters change
@@ -92,13 +100,15 @@ export function useDirectory(
     updateURL({
       search: debouncedSearch,
       category: selectedCategory,
+      university: selectedUniversity,
+      city: selectedCity,
       minRating: minRating,
       sortBy: sortBy,
     });
     
     // Fetch new data
     fetchBusinesses(1, true);
-  }, [debouncedSearch, selectedCategory, minRating, sortBy, updateURL]);
+  }, [debouncedSearch, selectedCategory, selectedUniversity, selectedCity, minRating, sortBy, updateURL]);
 
   // Load more businesses
   const loadMore = useCallback(() => {
@@ -112,6 +122,8 @@ export function useDirectory(
     setSearchQuery("");
     setDebouncedSearch("");
     setSelectedCategory("All");
+    setSelectedUniversity("All");
+    setSelectedCity("All");
     setMinRating(0);
     setSortBy("name");
   }, []);
@@ -125,6 +137,10 @@ export function useDirectory(
     setSearchQuery,
     selectedCategory,
     setSelectedCategory,
+    selectedUniversity,
+    setSelectedUniversity,
+    selectedCity,
+    setSelectedCity,
     minRating,
     setMinRating,
     sortBy,

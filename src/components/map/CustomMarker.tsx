@@ -1,7 +1,7 @@
 "use client";
 
 import { Marker } from '@react-google-maps/api';
-import { UMKMData } from '@/data/UMKMType';
+import { UMKMData } from '@/data/UMKM.type';
 
 interface CustomMarkerProps {
   business: UMKMData;
@@ -19,14 +19,18 @@ const getCategoryColor = (category: string) => {
 };
 
 const getCategoryIcon = (category: string) => {
-  // Simple circle icon for all categories
-  return '●';
+  const cat = category.toLowerCase();
+  if (cat.includes('food') || cat.includes('warung')) return '🍜';
+  if (cat.includes('cafe') || cat.includes('coffee')) return '☕';
+  if (cat.includes('laundry')) return '🧺';
+  if (cat.includes('store')) return '🛒';
+  return '🏪';
 };
 
-// Create SVG marker icon
+// Create SVG marker icon with emoji
 const createMarkerIcon = (color: string, icon: string, isSelected: boolean) => {
   const size = isSelected ? 48 : 40;
-  const iconSize = isSelected ? 24 : 20;
+  const fontSize = isSelected ? 22 : 18;
   
   return {
     url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
@@ -47,13 +51,13 @@ const createMarkerIcon = (color: string, icon: string, isSelected: boolean) => {
         
         <!-- Main circle with shadow -->
         <circle cx="${size/2}" cy="${size/2}" r="${size/2 - 4}" fill="${color}" stroke="white" stroke-width="3" filter="url(#shadow)"/>
-        ${isSelected ? `<circle cx="${size/2}" cy="${size/2}" r="${size/2}" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>` : ''}
+        ${isSelected ? `<circle cx="${size/2}" cy="${size/2}" r="${size/2 + 2}" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>` : ''}
         
-        <!-- Simple inner circle -->
-        <circle cx="${size/2}" cy="${size/2}" r="${iconSize/2}" fill="white" opacity="0.9"/>
+        <!-- Emoji icon -->
+        <text x="${size/2}" y="${size/2}" font-size="${fontSize}" text-anchor="middle" dominant-baseline="central">${icon}</text>
         
         <!-- Pin point -->
-        <path d="M ${size/2 - 6} ${size} L ${size/2} ${size + 10} L ${size/2 + 6} ${size} Z" fill="${color}"/>
+        <path d="M ${size/2 - 6} ${size} L ${size/2} ${size + 10} L ${size/2 + 6} ${size} Z" fill="${color}" stroke="white" stroke-width="1"/>
       </svg>
     `)}`,
     scaledSize: new google.maps.Size(size, size + 12),

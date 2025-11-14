@@ -8,8 +8,14 @@ type SortOption = "name" | "rating" | "newest";
 
 interface FilterBarProps {
   readonly categories: string[];
+  readonly universities: string[];
+  readonly cities: string[];
   readonly selectedCategory: string;
   readonly onCategoryChange: (category: string) => void;
+  readonly selectedUniversity: string;
+  readonly onUniversityChange: (university: string) => void;
+  readonly selectedCity: string;
+  readonly onCityChange: (city: string) => void;
   readonly minRating: number;
   readonly onRatingChange: (rating: number) => void;
   readonly sortBy: SortOption;
@@ -19,8 +25,14 @@ interface FilterBarProps {
 
 export function FilterBar({
   categories,
+  universities,
+  cities,
   selectedCategory,
   onCategoryChange,
+  selectedUniversity,
+  onUniversityChange,
+  selectedCity,
+  onCityChange,
   minRating,
   onRatingChange,
   sortBy,
@@ -30,7 +42,11 @@ export function FilterBar({
   const [isOpen, setIsOpen] = useState(false);
 
   const hasActiveFilters =
-    selectedCategory !== "All" || minRating > 0 || sortBy !== "name";
+    selectedCategory !== "All" || 
+    selectedUniversity !== "All" || 
+    selectedCity !== "All" || 
+    minRating > 0 || 
+    sortBy !== "name";
 
   return (
     <div className="space-y-4">
@@ -53,7 +69,13 @@ export function FilterBar({
                 <span className="font-semibold text-foreground">Filters</span>
                 {hasActiveFilters && (
                   <span className="px-2 py-0.5 rounded-full bg-brand-500 text-white text-xs font-bold">
-                    {[selectedCategory !== "All", minRating > 0, sortBy !== "name"].filter(Boolean).length}
+                    {[
+                      selectedCategory !== "All", 
+                      selectedUniversity !== "All",
+                      selectedCity !== "All",
+                      minRating > 0, 
+                      sortBy !== "name"
+                    ].filter(Boolean).length}
                   </span>
                 )}
               </div>
@@ -98,7 +120,7 @@ export function FilterBar({
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
           >
             <div className="p-6 rounded-2xl backdrop-blur-2xl bg-white/20 dark:bg-black/20 border border-white/90 dark:border-white/20 shadow-xl hover:shadow-2xl">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                 {/* Category */}
                 <div className="space-y-2">
                   <label
@@ -121,6 +143,64 @@ export function FilterBar({
                       {categories.map((category) => (
                         <option key={category} value={category}>
                           {category}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* University */}
+                <div className="space-y-2">
+                  <label
+                    htmlFor="university-filter"
+                    className="block text-sm font-semibold text-foreground"
+                  >
+                    University
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="university-filter"
+                      value={selectedUniversity}
+                      onChange={(e) => onUniversityChange(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-white/30 dark:bg-black/30 border border-white/60 dark:border-white/10 text-foreground dark:text-white backdrop-blur-md shadow-inner focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all appearance-none cursor-pointer"
+                      style={{
+                        colorScheme: "light dark",
+                      }}
+                    >
+                      <option value="All">All Universities</option>
+                      {universities.map((university) => (
+                        <option key={university} value={university}>
+                          {university}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* City */}
+                <div className="space-y-2">
+                  <label
+                    htmlFor="city-filter"
+                    className="block text-sm font-semibold text-foreground"
+                  >
+                    City
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="city-filter"
+                      value={selectedCity}
+                      onChange={(e) => onCityChange(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-white/30 dark:bg-black/30 border border-white/60 dark:border-white/10 text-foreground dark:text-white backdrop-blur-md shadow-inner focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all appearance-none cursor-pointer"
+                      style={{
+                        colorScheme: "light dark",
+                      }}
+                    >
+                      <option value="All">All Cities</option>
+                      {cities.map((city) => (
+                        <option key={city} value={city}>
+                          {city}
                         </option>
                       ))}
                     </select>

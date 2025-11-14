@@ -13,32 +13,32 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://spilldong.app"),
   title: {
-    default: "SpillDong | Find Local Businesses Near Your Campus",
-    template: "%s | SpillDong"
+    default: "SpillDong! | Find Local Businesses Near Your Campus",
+    template: "%s | SpillDong!"
   },
   description: "Discover the best local businesses near your campus. Find laundry services, food, stores, and pharmacies trusted by students. Built by students, for students.",
   keywords: ["student directory", "local business", "campus services", "laundry", "food delivery", "student discounts", "pharmacy", "stores"],
-  authors: [{ name: "SpillDong Team" }],
-  creator: "SpillDong",
+  authors: [{ name: "SpillDong! Team" }],
+  creator: "SpillDong!",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://spilldong.app",
-    siteName: "SpillDong",
-    title: "SpillDong | Find Local Businesses Near Your Campus",
+    siteName: "SpillDong!",
+    title: "SpillDong! | Find Local Businesses Near Your Campus",
     description: "Find the best local businesses near your campus. Laundry, food, stores, and more.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "SpillDong - Local Business Directory",
+        alt: "SpillDong!",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SpillDong - Local Business Directory for Students",
+    title: "SpillDong! - Local Business Directory for Students",
     description: "Find the best local businesses near your campus",
     images: ["/og-image.png"],
   },
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'SpillDong',
+    title: 'SpillDong!',
   },
   formatDetection: {
     telephone: false,

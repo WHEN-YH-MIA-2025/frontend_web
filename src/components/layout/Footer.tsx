@@ -12,11 +12,11 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="inline-block mb-4">
               <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-brand-600 to-brand-400">
-                SpillDong
+                SpillDong!
               </h3>
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Connecting students with local businesses since 2025.
+              Connecting students with local businesses around them.
             </p>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span>Made with</span>
@@ -74,17 +74,6 @@ export function Footer() {
                 >
                   <Github className="w-4 h-4" />
                   <span>GitHub</span>
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-muted-foreground hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  <span>LinkedIn</span>
                 </a>
               </li>
             </ul>

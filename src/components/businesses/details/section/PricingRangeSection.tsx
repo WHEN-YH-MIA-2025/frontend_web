@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { UMKMData } from "@/data/UMKMType";
+import { UMKMData } from "@/data/UMKM.type";
 import { DollarSign, TrendingUp } from "lucide-react";
 
 interface PricingRangeSectionProps {

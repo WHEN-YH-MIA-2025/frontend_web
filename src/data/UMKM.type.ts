@@ -1,3 +1,5 @@
+import { University } from "./University.type";
+
 export type Metadata = {
   id: number;
   createdAt: Date;
@@ -35,6 +37,8 @@ export type UMKMInfo = {
   rating: number;
   reviews?: ReviewData[];
   schedules: Schedule[];
+  university?: University;
+  city: string
 };
 
 export const universalMockReview: ReviewData[] = [

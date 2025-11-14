@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { UMKMData } from '@/data/UMKMType';
+import { UMKMData } from '@/data/UMKM.type';
 import { X, Star, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 

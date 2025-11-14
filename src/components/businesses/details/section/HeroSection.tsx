@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Star, MapPin } from "lucide-react";
-import { UMKMData } from "@/data/UMKMType";
+import { UMKMData } from "@/data/UMKM.type";
 
 interface HeroSectionProps {
   business: UMKMData;

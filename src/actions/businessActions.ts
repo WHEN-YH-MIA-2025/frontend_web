@@ -1,13 +1,15 @@
 "use server";
 
-import { umkmDat, Category } from "@/data/UMKMData";
-import { UMKMData } from "@/data/UMKMType";
+import { umkmData, Category } from "@/data/UMKMData";
+import { UMKMData } from "@/data/UMKM.type";
 
 export type FilterOptions = {
   search?: string;
   category?: string;
   minRating?: number;
   sortBy?: "name" | "rating" | "newest";
+  university?: string;
+  city?: string;
 };
 
 export async function getBusinesses(
@@ -18,7 +20,7 @@ export async function getBusinesses(
   // Simulate network delay for realistic loading
   await new Promise((resolve) => setTimeout(resolve, 300));
 
-  let filteredData = [...umkmDat];
+  let filteredData = [...umkmData];
 
   // Apply search filter
   if (filters?.search) {
@@ -35,6 +37,20 @@ export async function getBusinesses(
   if (filters?.category && filters.category !== "All") {
     filteredData = filteredData.filter(
       (business) => business.category === filters.category
+    );
+  }
+
+  // Apply university filter
+  if (filters?.university && filters.university !== "All") {
+    filteredData = filteredData.filter(
+      (business) => business.university?.code === filters.university
+    );
+  }
+
+  // Apply city filter
+  if (filters?.city && filters.city !== "All") {
+    filteredData = filteredData.filter(
+      (business) => business.city === filters.city
     );
   }
 
@@ -82,10 +98,30 @@ export async function getCategories(): Promise<string[]> {
   return Object.values(Category);
 }
 
+export async function getUniversities(): Promise<string[]> {
+  const universities = new Set<string>();
+  umkmData.forEach((business) => {
+    if (business.university?.code) {
+      universities.add(business.university.code);
+    }
+  });
+  return Array.from(universities).sort();
+}
+
+export async function getCities(): Promise<string[]> {
+  const cities = new Set<string>();
+  umkmData.forEach((business) => {
+    if (business.city) {
+      cities.add(business.city);
+    }
+  });
+  return Array.from(cities).sort();
+}
+
 export async function getBusinessById(id: number): Promise<UMKMData | null> {
   // Simulate network delay for realistic loading
   await new Promise((resolve) => setTimeout(resolve, 200));
   
-  const business = umkmDat.find((b) => b.id === id);
+  const business = umkmData.find((b) => b.id === id);
   return business || null;
 }

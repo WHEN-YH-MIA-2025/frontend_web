@@ -1,7 +1,7 @@
 "use client";
 
 import { InfoWindow } from '@react-google-maps/api';
-import { UMKMData } from '@/data/UMKMType';
+import { UMKMData } from '@/data/UMKM.type';
 import { Star, MapPin, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';

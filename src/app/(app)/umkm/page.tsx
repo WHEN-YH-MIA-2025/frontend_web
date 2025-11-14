@@ -1,4 +1,4 @@
-import { getBusinesses, getCategories, FilterOptions } from "@/actions/businessActions";
+import { getBusinesses, getCategories, getUniversities, getCities, FilterOptions } from "@/actions/businessActions";
 import { DirectoryContent } from "@/components/directory/DirectoryContent";
 import { Suspense } from "react";
 import { BusinessGridSkeleton } from "@/components/businesses/BusinessCardSkeleton";
@@ -6,13 +6,15 @@ import { BusinessGridSkeleton } from "@/components/businesses/BusinessCardSkelet
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Business Directory | SpillDong",
+  title: "Business Directory",
   description: "Discover local businesses around your campus. Find food, laundry, and more.",
 };
 
 type SearchParams = Promise<{
   search?: string;
   category?: string;
+  university?: string;
+  city?: string;
   minRating?: string;
   sortBy?: string;
   page?: string;
@@ -26,6 +28,8 @@ async function DirectoryPage({ searchParams }: { searchParams: SearchParams }) {
   const filters: FilterOptions = {
     search: params.search,
     category: params.category,
+    university: params.university,
+    city: params.city,
     minRating: params.minRating ? parseFloat(params.minRating) : undefined,
     sortBy: params.sortBy as FilterOptions['sortBy'],
   };
@@ -33,9 +37,11 @@ async function DirectoryPage({ searchParams }: { searchParams: SearchParams }) {
   const currentPage = params.page ? parseInt(params.page) : 1;
   
   // Fetch filtered data server-side
-  const [businessesResult, categories] = await Promise.all([
+  const [businessesResult, categories, universities, cities] = await Promise.all([
     getBusinesses(currentPage, 9, filters),
     getCategories(),
+    getUniversities(),
+    getCities(),
   ]);
 
   return (
@@ -69,6 +75,8 @@ async function DirectoryPage({ searchParams }: { searchParams: SearchParams }) {
           <DirectoryContent
             initialBusinesses={businessesResult.businesses}
             categories={categories}
+            universities={universities}
+            cities={cities}
             initialFilters={filters}
             initialTotal={businessesResult.total}
             initialHasMore={businessesResult.hasMore}

@@ -26,7 +26,7 @@ export function CTASection() {
             Own a Business?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Join SpillDong and reach thousands of students in your area. 
+            Join SpillDong! and reach thousands of students in your area. 
             Get discovered by your next customers today!
           </p>
           <Button size="xl" variant="glass" className="bg-white text-brand-600 hover:bg-white/90 border-0">

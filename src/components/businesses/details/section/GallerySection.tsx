@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { UMKMData } from "@/data/UMKMType";
+import { UMKMData } from "@/data/UMKM.type";
 import { ImageIcon } from "lucide-react";
 import { useState } from "react";
 import { ImageViewer } from "../components/ImageViewer";

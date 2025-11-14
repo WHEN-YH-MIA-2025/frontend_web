@@ -35,7 +35,7 @@ const values = [
 
 const team = [
   {
-    role: 'Founder & Developer',
+    role: 'Developer',
     description: 'Passionate about connecting students with local businesses',
     emoji: '👨‍💻'
   },
@@ -97,7 +97,7 @@ export default function AboutPage() {
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
               About{" "}
               <span className="bg-clip-text text-transparent bg-linear-to-r from-brand-600 via-purple-600 to-cyan-600 dark:from-brand-400 dark:via-purple-400 dark:to-cyan-400 animate-gradient">
-                SpillDong
+                SpillDong!
               </span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 dark:text-foreground/70 leading-relaxed">
@@ -130,11 +130,11 @@ export default function AboutPage() {
                 </div>
                 
                 <p className="text-foreground/80 dark:text-foreground/70">
-                  SpillDong was born out of a simple frustration: finding reliable local businesses near campus was harder than it should be. As students ourselves, we knew there had to be a better way.
+                  SpillDong! was born out of a simple frustration: finding reliable local businesses near campus was harder than it should be. As students ourselves, we knew there had to be a better way.
                 </p>
 
                 <p className="text-foreground/80 dark:text-foreground/70">
-                  We created SpillDong to be the go-to platform for students looking for laundry services, food delivery, convenience stores, and pharmacies. Our directory is built by students, for students, featuring only verified businesses that we trust.
+                  We created SpillDong! to be the go-to platform for students looking for laundry services, food delivery, convenience stores, and pharmacies. Our directory is built by students, for students, featuring only verified businesses that we trust.
                 </p>
               </div>
             </motion.div>

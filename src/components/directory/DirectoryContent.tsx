@@ -1,7 +1,7 @@
 "use client";
 
 import { useDirectory } from "@/hooks/useDirectory";
-import { UMKMData } from "@/data/UMKMType";
+import { UMKMData } from "@/data/UMKM.type";
 import { SearchBar } from "./SearchBar";
 import { FilterBar } from "./FilterBar";
 import { BusinessCard } from "@/components/businesses/BusinessCard";
@@ -14,6 +14,8 @@ import { FilterOptions } from "@/actions/businessActions";
 interface DirectoryContentProps {
   readonly initialBusinesses: UMKMData[];
   readonly categories: string[];
+  readonly universities: string[];
+  readonly cities: string[];
   readonly initialFilters?: FilterOptions;
   readonly initialTotal?: number;
   readonly initialHasMore?: boolean;
@@ -22,6 +24,8 @@ interface DirectoryContentProps {
 export function DirectoryContent({
   initialBusinesses,
   categories,
+  universities,
+  cities,
   initialFilters,
   initialTotal = 0,
   initialHasMore = true,
@@ -35,6 +39,10 @@ export function DirectoryContent({
     setSearchQuery,
     selectedCategory,
     setSelectedCategory,
+    selectedUniversity,
+    setSelectedUniversity,
+    selectedCity,
+    setSelectedCity,
     minRating,
     setMinRating,
     sortBy,
@@ -55,8 +63,14 @@ export function DirectoryContent({
       {/* Filters */}
       <FilterBar
         categories={categories}
+        universities={universities}
+        cities={cities}
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
+        selectedUniversity={selectedUniversity}
+        onUniversityChange={setSelectedUniversity}
+        selectedCity={selectedCity}
+        onCityChange={setSelectedCity}
         minRating={minRating}
         onRatingChange={setMinRating}
         sortBy={sortBy}

@@ -1,7 +1,7 @@
 "use client";
 
 import { MapContainer } from '@/components/map';
-import { umkmDat } from '@/data/UMKMData';
+import { umkmData } from '@/data/UMKMData';
 
 // Get API key from environment variable
 const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
@@ -21,5 +21,5 @@ export default function MapsPage() {
     );
   }
 
-  return <MapContainer businesses={umkmDat} apiKey={GOOGLE_MAPS_API_KEY} />;
+  return <MapContainer businesses={umkmData} apiKey={GOOGLE_MAPS_API_KEY} />;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { UMKMData } from "@/data/UMKMType";
+import { UMKMData } from "@/data/UMKM.type";
 import { MapPin, Star, Clock, Eye, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

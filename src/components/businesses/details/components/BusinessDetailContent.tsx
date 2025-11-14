@@ -1,6 +1,6 @@
 "use client";
 
-import { UMKMData } from "@/data/UMKMType";
+import { UMKMData } from "@/data/UMKM.type";
 import {
   HeroSection,
   AboutSection,
